@@ -1,8 +1,25 @@
+import { useEffect, useRef } from "react";
 import { HomeStyle } from "./Home.styled";
 
 const Home = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const handleWheel = (e) => {
+      e.preventDefault();
+      containerRef.current.scrollLeft += e.deltaY;
+    };
+
+    const container = containerRef.current;
+    container.addEventListener("wheel", handleWheel);
+
+    return () => {
+      container.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
+
   return (
-    <HomeStyle>
+    <HomeStyle ref={containerRef}>
       <main>
         <section className="intro">
           <h1 className="intro-title">Portfolio Website of Lenny Ruprecht</h1>
@@ -23,7 +40,7 @@ const Home = () => {
             <figure className="projects-figure">
               <img
                 src="https://picsum.photos/1000/1000"
-                alt="project picture"
+                alt="visual for project 1"
               />
             </figure>
             <div className="projects-content">
@@ -35,7 +52,7 @@ const Home = () => {
             <figure className="projects-figure">
               <img
                 src="https://picsum.photos/1000/1000"
-                alt="project picture"
+                alt="visual for project 2"
               />
             </figure>
             <div className="projects-content">
@@ -47,7 +64,7 @@ const Home = () => {
             <figure className="projects-figure">
               <img
                 src="https://picsum.photos/1000/1000"
-                alt="project picture"
+                alt="visual for project 3"
               />
             </figure>
             <div className="projects-content">
