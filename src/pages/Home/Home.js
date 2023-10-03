@@ -47,6 +47,7 @@ const Home = () => {
       <main>
         <section className="intro">
           <h1 className="intro-title">Lenny Ruprecht</h1>
+          <h2 className="intro-profession">Software Engineer</h2>
           <p className="intro-text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget
             imperdiet nulla, non porta orci. Nunc sollicitudin nibh in tortor

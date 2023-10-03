@@ -17,7 +17,11 @@ export const HomeStyle = styled.div`
 
     .intro-title {
       font-size: 80px;
-      margin-bottom: 40px;
+      margin-bottom: 10px;
+    }
+
+    .intro-profession {
+      font-size: 40px;
     }
 
     .intro-footer {
