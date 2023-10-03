@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { HomeStyle } from "./Home.styled";
+import EastIcon from "@mui/icons-material/East";
 
 const Home = () => {
   const containerRef = useRef(null);
@@ -18,11 +19,34 @@ const Home = () => {
     };
   }, []);
 
+  const handleArrowClick = () => {
+    const currentScrollPosition = containerRef.current.scrollLeft;
+    const projectSections = document.querySelectorAll(".projects-section");
+    let targetScrollPosition = null;
+
+    projectSections.forEach((section) => {
+      const sectionPosition = section.offsetLeft;
+      if (
+        sectionPosition > currentScrollPosition &&
+        targetScrollPosition === null
+      ) {
+        targetScrollPosition = sectionPosition;
+      }
+    });
+
+    if (targetScrollPosition !== null) {
+      containerRef.current.scrollTo({
+        left: targetScrollPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <HomeStyle ref={containerRef}>
       <main>
         <section className="intro">
-          <h1 className="intro-title">Portfolio Website of Lenny Ruprecht</h1>
+          <h1 className="intro-title">Lenny Ruprecht</h1>
           <p className="intro-text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget
             imperdiet nulla, non porta orci. Nunc sollicitudin nibh in tortor
@@ -32,11 +56,16 @@ const Home = () => {
             augue non neque dignissim vestibulum.
           </p>
           <footer className="intro-footer">
-            <button className="scroll-hint">Scroll</button>
+            <div className="scroll-hint">
+              <EastIcon
+                style={{ fontSize: "25px" }}
+                onClick={handleArrowClick}
+              ></EastIcon>
+            </div>
           </footer>
         </section>
         <div className="projects-container">
-          <section className="projects-section">
+          <section className="projects-section" id="project-1">
             <figure className="projects-figure">
               <img
                 src="https://picsum.photos/1000/1000"
@@ -48,10 +77,10 @@ const Home = () => {
               <p className="project-description">This is a dummy description</p>
             </div>
           </section>
-          <section className="projects-section">
+          <section className="projects-section" id="project-2">
             <figure className="projects-figure">
               <img
-                src="https://picsum.photos/1000/1000"
+                src="https://picsum.photos/1200/1200"
                 alt="visual for project 2"
               />
             </figure>
@@ -60,7 +89,7 @@ const Home = () => {
               <p className="project-description">This is a dummy description</p>
             </div>
           </section>
-          <section className="projects-section">
+          <section className="projects-section" id="project-3">
             <figure className="projects-figure">
               <img
                 src="https://picsum.photos/1000/1000"

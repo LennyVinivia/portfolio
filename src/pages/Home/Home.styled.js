@@ -5,13 +5,12 @@ export const HomeStyle = styled.div`
   overflow-x: hidden;
 
   main {
-    padding: 50px 0px;
+    padding: 50px;
     display: flex;
   }
   .intro {
     position: relative;
-    min-width: 800px;
-    margin-top: 100px;
+    min-width: 40vw;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -28,7 +27,7 @@ export const HomeStyle = styled.div`
       margin-top: auto;
 
       .scroll-hint {
-        align-self: flex-end;
+        cursor: pointer;
       }
     }
   }
@@ -45,12 +44,14 @@ export const HomeStyle = styled.div`
       .projects-figure {
         border-radius: 15px;
         overflow: hidden;
-        height: 800px;
-        width: 800px;
+        height: 85vh;
+        width: 35vw;
+        min-width: 600px;
         display: block;
         position: relative;
 
         img {
+          height: 100%;
           object-fit: cover;
         }
       }
